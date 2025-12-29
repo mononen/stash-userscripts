@@ -917,19 +917,21 @@
                 const imageNode = searchResultItem.querySelector('.scene-image-container .optional-field .optional-field-content');
 
                 const metadataNode = searchResultItem.querySelector('.scene-metadata');
-                const titleNode = metadataNode.querySelector('h4 .optional-field .optional-field-content');
+                const titleNode = metadataNode?.querySelector('h4 .optional-field .optional-field-content');
                 let dateNode;
                 let studioCodeNode;
                 let directorNode;
-                for (const node of searchResultItem.querySelectorAll('h5 .optional-field .optional-field-content')) {
-                    if (node.innerText === remoteData.date) {
-                        dateNode = node;
-                    }
-                    else if (node.innerText === remoteData.code) {
-                        studioCodeNode = node;
-                    }
-                    else if (node.innerText === 'Director: ' + remoteData.director) {
-                        directorNode = node;
+                if (remoteData) {
+                    for (const node of searchResultItem.querySelectorAll('h5 .optional-field .optional-field-content')) {
+                        if (remoteData.date && node.innerText === remoteData.date) {
+                            dateNode = node;
+                        }
+                        else if (remoteData.code && node.innerText === remoteData.code) {
+                            studioCodeNode = node;
+                        }
+                        else if (remoteData.director && node.innerText === 'Director: ' + remoteData.director) {
+                            directorNode = node;
+                        }
                     }
                 }
 
