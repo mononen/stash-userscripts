@@ -3,16 +3,14 @@
 // @namespace     https://github.com/mononen/stash-userscripts
 // @description Stash Userscripts Bundle
 // @version     0.25.0
-// @author      7dJx1qP
+// @author      mononen
 // @match       http://localhost:9999/*
-// @resource    IMPORTED_CSS https://raw.githubusercontent.com/fengyuanchen/cropperjs/main/dist/cropper.min.css
 // @grant       unsafeWindow
 // @grant       GM_setClipboard
 // @grant       GM_getResourceText
 // @grant       GM_addStyle
 // @grant       GM.getValue
 // @grant       GM.setValue
-// @require     https://raw.githubusercontent.com/fengyuanchen/cropperjs/main/dist/cropper.min.js
 // @require     https://raw.githubusercontent.com/nodeca/js-yaml/master/dist/js-yaml.js
 // @require     https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.2/marked.min.js
 // @require     https://raw.githubusercontent.com/mononen/stash-userscripts/master/src/StashUserscriptLibrary.js
