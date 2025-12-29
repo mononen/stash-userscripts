@@ -19,13 +19,33 @@
     .tagger-remove { order: 10; }
     `;
 
+    const DEFAULT_DELAY = 200;
+    const TIMEOUT_DELAY = 5000; // Fallback timeout if response not detected
     let running = false;
     const buttons = [];
     let maxCount = 0;
     let sceneId = null;
+    let timeoutId = null;
+
+    function scheduleRun() {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+            timeoutId = null;
+        }
+        setTimeout(() => {
+            run();
+        }, DEFAULT_DELAY);
+    }
 
     function run() {
         if (!running) return;
+        
+        // Clear any existing timeout
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+            timeoutId = null;
+        }
+        
         const button = buttons.pop();
         stash.setProgress((maxCount - buttons.length) / maxCount * 100);
         if (button) {
@@ -41,9 +61,15 @@
             sceneId = id;
             if (!button.disabled) {
                 button.click();
+                // Set a fallback timeout in case response detection fails
+                timeoutId = setTimeout(() => {
+                    console.log('[Stash Batch Save] Response timeout, proceeding to next scene');
+                    run();
+                }, TIMEOUT_DELAY);
             }
             else {
                 buttons.push(button);
+                scheduleRun();
             }
         }
         else {
@@ -52,10 +78,29 @@
     }
 
     function processSceneUpdate(evt) {
-        if (running && evt.detail.data?.sceneUpdate?.id === sceneId) {
-            setTimeout(() => {
-                run();
-            }, 0);
+        if (!running) return;
+        
+        const data = evt.detail.data;
+        if (!data) return;
+        
+        // Check for various possible mutation response formats
+        // sceneUpdate - single scene update
+        // scenesUpdate - bulk scene update (newer API)
+        // bulkSceneUpdate - alternative bulk update name
+        let responseId = null;
+        
+        if (data.sceneUpdate?.id) {
+            responseId = data.sceneUpdate.id;
+        } else if (data.scenesUpdate) {
+            // Handle bulk update response - may be an array
+            const scenes = Array.isArray(data.scenesUpdate) ? data.scenesUpdate : [data.scenesUpdate];
+            responseId = scenes.find(s => s?.id === sceneId)?.id;
+        } else if (data.bulkSceneUpdate?.id) {
+            responseId = data.bulkSceneUpdate.id;
+        }
+        
+        if (responseId === sceneId) {
+            scheduleRun();
         }
     }
 
@@ -100,6 +145,10 @@
         running = false;
         stash.setProgress(0);
         sceneId = null;
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+            timeoutId = null;
+        }
         stash.removeEventListener('stash:response', processSceneUpdate);
     }
 
