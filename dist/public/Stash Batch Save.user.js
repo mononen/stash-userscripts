@@ -1,18 +1,16 @@
 // ==UserScript==
 // @name        Stash Batch Save
-// @namespace   https://github.com/7dJx1qP/stash-userscripts
+// @namespace   https://github.com/mononen/stash-userscripts
 // @description Adds a batch save button to scenes tagger
 // @version     0.6.0
 // @author      mononen
 // @match       http://localhost:9999/*
 // @grant       unsafeWindow
-// @require     https://raw.githubusercontent.com/7dJx1qP/stash-userscripts/master/src/StashUserscriptLibrary.js
+// @require     https://raw.githubusercontent.com/mononen/stash-userscripts/master/src/StashUserscriptLibrary.js
 // ==/UserScript==
 
 (function () {
     'use strict';
-
-    console.log('[Stash Batch Save] Script loaded - version 0.6.0');
 
     const {
         stash,
@@ -26,8 +24,6 @@
         sortElementChildren,
         createElementFromHTML,
     } = unsafeWindow.stash;
-
-    console.log('[Stash Batch Save] Library loaded:', !!stash);
 
     document.body.appendChild(document.createElement('style')).textContent = `
     .search-item > div.row:first-child > div.col-md-6.my-1 > div:first-child { display: flex; flex-direction: column; }
@@ -203,10 +199,8 @@
     }
 
     stash.addEventListener('tagger:mutations:header', evt => {
-        console.log('[Stash Batch Save] tagger:mutations:header event fired');
         const el = getElementByXpath("//button[text()='Scrape All']");
         if (el && !document.getElementById(btnId)) {
-            console.log('[Stash Batch Save] Adding Save All button to page');
             const container = el.parentElement;
             container.appendChild(btn);
             sortElementChildren(container);

@@ -1,8 +1,6 @@
 (function () {
     'use strict';
 
-    console.log('[Stash Batch Save] Script loaded - version 0.6.0');
-
     const {
         stash,
         Stash,
@@ -15,8 +13,6 @@
         sortElementChildren,
         createElementFromHTML,
     } = unsafeWindow.stash;
-
-    console.log('[Stash Batch Save] Library loaded:', !!stash);
 
     document.body.appendChild(document.createElement('style')).textContent = `
     .search-item > div.row:first-child > div.col-md-6.my-1 > div:first-child { display: flex; flex-direction: column; }
@@ -192,10 +188,8 @@
     }
 
     stash.addEventListener('tagger:mutations:header', evt => {
-        console.log('[Stash Batch Save] tagger:mutations:header event fired');
         const el = getElementByXpath("//button[text()='Scrape All']");
         if (el && !document.getElementById(btnId)) {
-            console.log('[Stash Batch Save] Adding Save All button to page');
             const container = el.parentElement;
             container.appendChild(btn);
             sortElementChildren(container);

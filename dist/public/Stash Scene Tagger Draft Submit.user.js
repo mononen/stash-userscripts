@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name        Stash Scene Tagger Draft Submit
-// @namespace   https://github.com/7dJx1qP/stash-userscripts
+// @namespace   https://github.com/mononen/stash-userscripts
 // @description Adds button to Scene Tagger to submit draft to stashdb
 // @version     0.1.1
 // @author      7dJx1qP
 // @match       http://localhost:9999/*
 // @grant       unsafeWindow
-// @require     https://raw.githubusercontent.com/7dJx1qP/stash-userscripts/master/src/StashUserscriptLibrary.js
+// @require     https://raw.githubusercontent.com/mononen/stash-userscripts/master/src/StashUserscriptLibrary.js
 // ==/UserScript==
 
 (function () {

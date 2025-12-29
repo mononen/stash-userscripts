@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name        Stash Markdown
-// @namespace   https://github.com/7dJx1qP/stash-userscripts
+// @namespace   https://github.com/mononen/stash-userscripts
 // @description Adds markdown parsing to tag description fields
 // @version     0.2.0
 // @author      7dJx1qP
 // @match       http://localhost:9999/*
 // @grant       unsafeWindow
-// @require     https://raw.githubusercontent.com/7dJx1qP/stash-userscripts/master/src/StashUserscriptLibrary.js
+// @require     https://raw.githubusercontent.com/mononen/stash-userscripts/master/src/StashUserscriptLibrary.js
 // @require     https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.2/marked.min.js
 // ==/UserScript==
 

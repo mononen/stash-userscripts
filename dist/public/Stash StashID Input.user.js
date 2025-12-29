@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name        Stash StashID Input
-// @namespace   https://github.com/7dJx1qP/stash-userscripts
+// @namespace   https://github.com/mononen/stash-userscripts
 // @description Adds input for entering new stash id to performer details page and studio page
 // @version     0.5.0
 // @author      7dJx1qP
 // @match       http://localhost:9999/*
 // @grant       unsafeWindow
 // @grant       GM_setClipboard
-// @require     https://raw.githubusercontent.com/7dJx1qP/stash-userscripts/master/src/StashUserscriptLibrary.js
+// @require     https://raw.githubusercontent.com/mononen/stash-userscripts/master/src/StashUserscriptLibrary.js
 // ==/UserScript==
 
 (function () {

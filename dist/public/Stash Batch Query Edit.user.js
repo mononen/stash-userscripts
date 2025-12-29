@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Stash Batch Query Edit
-// @namespace   https://github.com/7dJx1qP/stash-userscripts
+// @namespace   https://github.com/mononen/stash-userscripts
 // @description Batch modify scene tagger search query
 // @version     0.6.0
 // @author      7dJx1qP
@@ -8,7 +8,7 @@
 // @grant       unsafeWindow
 // @grant       GM.getValue
 // @grant       GM.setValue
-// @require     https://raw.githubusercontent.com/7dJx1qP/stash-userscripts/master/src/StashUserscriptLibrary.js
+// @require     https://raw.githubusercontent.com/mononen/stash-userscripts/master/src/StashUserscriptLibrary.js
 // ==/UserScript==
 
 (function() {
