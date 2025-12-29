@@ -2,8 +2,12 @@
 // Exports utility functions and a Stash class that emits events whenever a GQL response is received and whenenever a page navigation change is detected
 // version 0.36.0
 
+console.log('[StashUserscriptLibrary] Loading...');
+
 (function () {
     'use strict';
+
+    console.log('[StashUserscriptLibrary] Initializing...');
 
     const stash = function () {
 
